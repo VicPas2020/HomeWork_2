@@ -3,11 +3,10 @@ package ru.digitalhabbits.homework2.impl;
 import ru.digitalhabbits.homework2.LetterCounter;
 
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class LetterCounterImpl implements LetterCounter {
     @Override
-    public Map<Character, Long> count(String input, ConcurrentHashMap<Character, Long> map) {
+    public Map<Character, Long> count(String input, Map<Character, Long> map) {
 
         for (char c : input.toCharArray()) {
             if (map.containsKey(c)) {

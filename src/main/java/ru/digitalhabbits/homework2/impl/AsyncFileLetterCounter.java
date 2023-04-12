@@ -15,8 +15,8 @@ public class AsyncFileLetterCounter implements FileLetterCounter {
     @Override
     public Map<Character, Long> count(File input) {
 
-        Queue<String> queue                    = new LinkedBlockingQueue<>();  // очередь в которую кладутся прочитанные из файла строки
-        ConcurrentHashMap<Character, Long> map = new ConcurrentHashMap<>();    // финальная мапа куда суммируются все символы
+        Queue<String> queue      = new LinkedBlockingQueue<>();  // очередь в которую кладутся прочитанные из файла строки
+        Map<Character, Long> map = new ConcurrentHashMap<>();    // финальная мапа куда суммируются все символы
 
         FileReaderImpl fileReader = new FileReaderImpl();
         try {

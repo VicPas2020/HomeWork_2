@@ -3,15 +3,16 @@ package ru.digitalhabbits.homework2;
 import lombok.SneakyThrows;
 import ru.digitalhabbits.homework2.impl.LetterCounterImpl;
 
+import java.util.Map;
 import java.util.Queue;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class MyCounterRunnable implements Runnable {
 
-    private final ConcurrentHashMap<Character, Long> map;    // финальная мапа куда суммируются все мапа из листа
+    private final Map<Character, Long> map;    // финальная мапа куда суммируются все мапа из листа
     private final Queue<String> queue;
+    private final LetterCounter counter = new LetterCounterImpl();
 
-    public MyCounterRunnable(ConcurrentHashMap<Character, Long> map, Queue<String> queue) {
+    public MyCounterRunnable(Map<Character, Long> map, Queue<String> queue) {
         this.map = map;
         this.queue = queue;
     }
@@ -19,10 +20,9 @@ public class MyCounterRunnable implements Runnable {
     @SneakyThrows
     @Override
     public void run() {
-        LetterCounterImpl counter = new LetterCounterImpl();
-        for (; ; ) {
+        for (;;) {
             if (queue.isEmpty()) {
-                Thread.sleep(10);
+                //Thread.sleep(10);
             } else {
                 String nextString = queue.remove();
                 if (nextString.equals("endOfQueueMarker")) {
