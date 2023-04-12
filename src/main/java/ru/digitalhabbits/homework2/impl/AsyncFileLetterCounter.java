@@ -8,9 +8,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import ru.digitalhabbits.homework2.FileLetterCounter;
-import ru.digitalhabbits.homework2.MyCounterRunnable;
+import ru.digitalhabbits.homework2.MultiThreadCounter;
 
-//todo Это копия MAIN класса
+//todo Это копия MAIN класса для тестов
 public class AsyncFileLetterCounter implements FileLetterCounter {
     @Override
     public Map<Character, Long> count(File input) {
@@ -25,7 +25,7 @@ public class AsyncFileLetterCounter implements FileLetterCounter {
             throw new RuntimeException(e);
         }
 
-        MyCounterRunnable counting = new MyCounterRunnable(map, queue);
+        MultiThreadCounter counting = new MultiThreadCounter(map, queue);
 
         Thread threadCounting = new Thread(counting);
         threadCounting.start();

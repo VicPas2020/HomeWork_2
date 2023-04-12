@@ -12,13 +12,13 @@ public class Main {
         ConcurrentHashMap<Character, Long> map = new ConcurrentHashMap<>();    // финальная мапа куда суммируются все символы
         File file                              = new File("src/test/resources/test.txt");
 
-        MyDownloader downloader = new MyDownloader(queue, file);
-        downloader.download();
+        FileToQueueReader reader = new FileToQueueReader(queue, file);
+        reader.download();
 
-        MyCounterRunnable counting = new MyCounterRunnable(map, queue);
+        MultiThreadCounter counter = new MultiThreadCounter(map, queue);
 
         // Запускаем подсчет в отдельном потоке
-        Thread threadCounting = new Thread(counting);
+        Thread threadCounting = new Thread(counter);
         threadCounting.start();
 
         // дожидаемся конци подсчета
