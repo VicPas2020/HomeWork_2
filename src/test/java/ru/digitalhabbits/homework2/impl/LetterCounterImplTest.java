@@ -1,6 +1,7 @@
 package ru.digitalhabbits.homework2.impl;
 
 import org.junit.jupiter.api.Test;
+import ru.digitalhabbits.homework2.DataForMultiThreadingUse;
 
 import java.util.Map;
 import java.util.Objects;
@@ -21,9 +22,11 @@ class LetterCounterImplTest {
 
         Map<Character, Long> map = new ConcurrentHashMap<>();
 
+        DataForMultiThreadingUse data = new DataForMultiThreadingUse(queue, map, null);
+
         //then
         LetterCounterImpl counter = new LetterCounterImpl();
-        counter.count(Objects.requireNonNull(queue.poll()), map);
+        counter.count(Objects.requireNonNull(data.getQueue().poll()), map);
 
         //when
         assertThat(map).isNotNull();
