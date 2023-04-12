@@ -8,6 +8,6 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public interface LetterCounter {
 
-    void count(String input, ConcurrentHashMap<Character, Long> map);
+    Map<Character, Long> count(String input, ConcurrentHashMap<Character, Long> map);
 
 }

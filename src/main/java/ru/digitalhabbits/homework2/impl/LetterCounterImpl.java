@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class LetterCounterImpl implements LetterCounter {
     @Override
-    public void count(String input, ConcurrentHashMap<Character, Long> map) {
+    public Map<Character, Long> count(String input, ConcurrentHashMap<Character, Long> map) {
 
         for (char c : input.toCharArray()) {
             if (map.containsKey(c)) {
@@ -16,6 +16,6 @@ public class LetterCounterImpl implements LetterCounter {
                 map.put(c, 1L);
             }
         }
-//        return map;
+        return map;
     }
 }

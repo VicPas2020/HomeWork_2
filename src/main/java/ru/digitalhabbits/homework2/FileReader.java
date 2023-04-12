@@ -10,6 +10,6 @@ import java.util.stream.Stream;
  */
 public interface FileReader {
 
-    void readLines(File file, Queue<String> queue) throws IOException;
+    Queue<String> readLines(File file, Queue<String> queue) throws IOException;
 
 }

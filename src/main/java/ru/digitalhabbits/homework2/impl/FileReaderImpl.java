@@ -12,7 +12,7 @@ import java.util.Queue;
 public class FileReaderImpl implements FileReader  {
 
     @Override
-    public void readLines(File file, Queue<String> queue) throws IOException {
+    public Queue<String> readLines(File file, Queue<String> queue) throws IOException {
 
         BufferedReader reader =
                 Files.newBufferedReader(Paths.get(file.toURI()));
@@ -25,6 +25,6 @@ public class FileReaderImpl implements FileReader  {
 
         queue.add("endOfQueueMarker");
         reader.close();
-        //return queue;
+        return queue;
     }
 }
